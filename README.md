@@ -25,3 +25,4 @@ Usage:
 ```
 [![asciicast](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN.svg)](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN)
 
+# Thank you!
