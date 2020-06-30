@@ -7,6 +7,12 @@ $ sudo chmod +x install.sh
 $ ./install.sh
 ```
 # Usage
+Target List should be with `https://` and `http://` use httpx or httprobe for this.
+```
+https://github.com
+```
+
+
 ```
  _______ ______ _______ ______                          _     
 (_______/ _____(_______/ _____)                        | |    
