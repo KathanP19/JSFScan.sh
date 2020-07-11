@@ -34,9 +34,9 @@ GO111MODULE=on go get -u -v github.com/lc/subjs
 echo -e "\n-----------------------FINISHED INSTALLING SUBJS------------------------"
 
 #INSTALL HAKCHECKURL
-echo -e "\n-----------------------INSTALLING HAKCHECKURL------------------------"
-go get github.com/hakluke/hakcheckurl
-echo -e "\n-----------------------FINISHED INSTALLING HAKCHECKURL------------------------"
+echo -e "\n-----------------------INSTALLING HTTPX------------------------"
+GO111MODULE=on go get -u -v github.com/projectdiscovery/httpx/cmd/httpx
+echo -e "\n-----------------------FINISHED INSTALLING HTTPX------------------------"
 
 #INSTALL MEG
 echo -e "\n-----------------------INSTALLING MEG------------------------"
