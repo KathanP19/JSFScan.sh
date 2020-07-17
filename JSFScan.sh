@@ -46,13 +46,21 @@ cd ..
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Manually Search For Secrets Using gf or grep in out/\e[0m\n";
 }
 
+#Gather JSFilesWordlist
+wordlist_js(){
+echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started Gathering Words From JsFiles-links For Wordlist.\e[0m\n";
+cat live_jsfile_links.txt | python3 ./tools/getjswords.py >> temp_jswordlist.txt
+cat temp_jswordlist.txt | sort -u >> jswordlist.txt
+rm temp_jswordlist.txt
+}
+
 #Save in Output Folder
 output(){
 mkdir -p $dir
 mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt $dir/
 mv jsfiles/ $dir/
 }
-while getopts ":l:esmo:" opt;do
+while getopts ":l:esmwo:" opt;do
         case ${opt} in
                 l ) target=$OPTARG
                     gather_js
@@ -63,6 +71,8 @@ while getopts ":l:esmo:" opt;do
                     ;;
                 m ) meg_gf
                     ;;
+                w ) wordlist_js
+                    ;;
                 o ) dir=$OPTARG
                     output
                     ;;
@@ -71,6 +81,7 @@ while getopts ":l:esmo:" opt;do
                      echo "       -e   Gather Endpoints For JSFiles";
                      echo "       -s   Find Secrets For JSFiles";
                      echo "       -m   Use Meg for fetching JsFiles for manual testing";
+                     echo "       -w   Make a wordlist using words from jsfiles";
                      echo "       -o   Make an Output Directory to put all things Together";
                      ;;
                 : ) echo "Invalid Options $OPTARG require an argument";
