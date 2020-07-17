@@ -53,3 +53,9 @@ cd ./tools/LinkFinder/
 sudo python3 setup.py install
 cd -
 echo -e "\n-----------------------FINISHED INSTALLING LINKFINDER------------------------"
+
+#INSTALL GETJSWORDS.py
+echo -e "\n-----------------------INSTALLING GETJSWORDS.PY------------------------"
+wget https://raw.githubusercontent.com/m4ll0k/Bug-Bounty-Toolz/master/getjswords.py
+mv getjswords.py ./tools/
+echo -e "\n-----------------------FINISHED INSTALLING GETJSWORDS.PY------------------------"
