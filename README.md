@@ -26,6 +26,7 @@ Usage:
        -e   Gather Endpoints For JSFiles
        -s   Find Secrets For JSFiles
        -m   Use Meg for fetching JsFiles for manual testing
+       -w   Make a wordlist using words from jsfiles
        -o   Make an Output Directory to put all things Together
 
 ```
