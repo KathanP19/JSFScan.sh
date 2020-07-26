@@ -20,7 +20,8 @@ gather_js(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started Gathering JsFiles-links\e[0m\n";
 cat $target | gau | grep -iE "\.js$" | uniq | sort >> jsfile_links.txt
 cat $target | subjs >> jsfile_links.txt
-cat jsfile_links.txt | httpx -status-code -silent | grep "200" | cut -d " " -f1 | sort -u > live_jsfile_links.txt
+cat $target | hakrawler -js -depth 2 -scope subs -plain >> jsfile_links.txt
+cat jsfile_links.txt | httpx -status-code -silent | grep -E '\[200\]$' | cut -d " " -f1 | sort -u > live_jsfile_links.txt
 }
 
 #Gather Endpoints From JsFiles
