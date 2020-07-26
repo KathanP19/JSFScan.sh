@@ -43,6 +43,11 @@ echo -e "\n-----------------------INSTALLING MEG------------------------"
 go get -u github.com/tomnomnom/meg
 echo -e "\n-----------------------FINISHED INSTALLING MEG------------------------"
 
+#INSTALL MEG
+echo -e "\n-----------------------INSTALLING HAKRAWLER------------------------"
+go get github.com/hakluke/hakrawler
+echo -e "\n-----------------------FINISHED INSTALLING HAKRAWLER------------------------"
+
 #INSTALL LINKFINDER
 echo -e "\n-----------------------INSTALLING LINKFINDER------------------------"
 cd ./tools
