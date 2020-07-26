@@ -11,6 +11,7 @@ Target List should be with `https://` and `http://` use httpx or httprobe for th
 ```
 https://github.com
 ```
+And if you want to add cookie then edit the command at line 23 `cat $target | hakrawler -js -cookie "cookie here" -depth 2 -scope subs -plain >> jsfile_links.txt` 
 
 
 ```
