@@ -40,7 +40,7 @@ interlace -tL live_jsfile_links.txt -threads 5 -c "python3 ./tools/SecretFinder/
 jsbeautify(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started to Gather JSFiles locally for Manual Testing\e[0m\n";
 mkdir -p jsfiles
-interlace -tL live_jsfile_links.txt -thread 5 -c "bash ./tools/getjsbeautify.sh _target_" -v
+interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/getjsbeautify.sh _target_" -v
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Manually Search For Secrets Using gf or grep in out/\e[0m\n";
 }
 
