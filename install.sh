@@ -38,10 +38,13 @@ echo -e "\n-----------------------INSTALLING HTTPX------------------------"
 GO111MODULE=on go get -u -v github.com/projectdiscovery/httpx/cmd/httpx
 echo -e "\n-----------------------FINISHED INSTALLING HTTPX------------------------"
 
-#INSTALL MEG
-echo -e "\n-----------------------INSTALLING MEG------------------------"
-go get -u github.com/tomnomnom/meg
-echo -e "\n-----------------------FINISHED INSTALLING MEG------------------------"
+#INSTALL GETJSBEAUTIFY.SH
+echo -e "\n-----------------------INSTALLING getjsbeautify.sh------------------------"
+wget https://raw.githubusercontent.com/m4ll0k/Bug-Bounty-Toolz/master/jsbeautify.py
+mv jsbeautify.py ./tools/
+wget https://gist.githubusercontent.com/KathanP19/c02130b163ba5817ca2ae99f7630f60f/raw/467cbb5d3773845bfd0e15b2608d6130dd1b6cd7/getjsbeautify.sh
+mv getjsbeautify.sh ./tools/
+echo -e "\n-----------------------FINISHED INSTALLING getjsbeautify.sh------------------------"
 
 #INSTALL MEG
 echo -e "\n-----------------------INSTALLING HAKRAWLER------------------------"
