@@ -37,13 +37,10 @@ interlace -tL live_jsfile_links.txt -threads 5 -c "python3 ./tools/SecretFinder/
 }
 
 #Collect Js Files For Maually Search
-meg_gf(){
+jsbeautify(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started to Gather JSFiles locally for Manual Testing\e[0m\n";
-mkdir jsfiles
-cp live_jsfile_links.txt ./jsfiles/hosts
-cd ./jsfiles/
-meg -d 1000 -v /
-cd ..
+mkdir -p jsfiles
+interlace -tL live_jsfile_links.txt -thread 5 -c "bash ./tools/getjsbeautify.sh _target_" -v
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Manually Search For Secrets Using gf or grep in out/\e[0m\n";
 }
 
@@ -70,7 +67,7 @@ while getopts ":l:esmwo:" opt;do
                     ;;
                 s ) secret_js
                     ;;
-                m ) meg_gf
+                m ) jsbeautify
                     ;;
                 w ) wordlist_js
                     ;;
@@ -81,7 +78,7 @@ while getopts ":l:esmwo:" opt;do
                      echo "       -l   Gather Js Files Links";
                      echo "       -e   Gather Endpoints For JSFiles";
                      echo "       -s   Find Secrets For JSFiles";
-                     echo "       -m   Use Meg for fetching JsFiles for manual testing";
+                     echo "       -m   Fetch JsFiles for manual testing Files will be Store in directory /jsfiles";
                      echo "       -w   Make a wordlist using words from jsfiles";
                      echo "       -o   Make an Output Directory to put all things Together";
                      ;;
