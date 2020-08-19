@@ -18,6 +18,8 @@ https://github.com
 ```
 And if you want to add cookie then edit the command at line 23 `cat $target | hakrawler -js -cookie "cookie here" -depth 2 -scope subs -plain >> jsfile_links.txt` 
 
+**NOTE: If you feel tool is slow just comment out hakrawler line at 23 in JSFScan.sh script , but it might result in little less jsfileslinks.**
+
 ```
  _______ ______ _______ ______                          _     
 (_______/ _____(_______/ _____)                        | |    
