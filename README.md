@@ -30,7 +30,7 @@ Usage:
        -l   Gather Js Files Links
        -e   Gather Endpoints For JSFiles
        -s   Find Secrets For JSFiles
-       -m   Use Meg for fetching JsFiles for manual testing
+       -m   Fetch JsFiles for manual testing Files will be Store in directory /jsfiles
        -w   Make a wordlist using words from jsfiles
        -o   Make an Output Directory to put all things Together
 
