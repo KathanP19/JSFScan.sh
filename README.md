@@ -1,7 +1,17 @@
 # JSFScan.sh
 Blog can be found at https://medium.com/@patelkathan22/beginners-guide-on-how-you-can-use-javascript-in-bugbounty-492f6eb1f9ea?sk=21500dc4288281c7e6ed2315943269e7
 
-Script made for all your javascript recon automation in bugbounty.Just pass subdomain list to it and options according to your preference.
+Script made for all your javascript recon automation in bugbounty. Just pass subdomain list to it and options according to your preference.
+
+# Features
+```
+1 - Gather Jsfile Links from different sources.
+2 - Extract Endpoints from Jsfiles
+3 - Find Secrets from Jsfiles
+4 - Get Jsfiles store locally for manual analysis
+5 - Make a Wordlist from Jsfiles
+6 - Extract Variable names from jsfiles for possible XSS.
+```
 
 # Installation
 **Note: Make sure you have installed golang properly before running installation script.**
@@ -34,6 +44,7 @@ Usage:
        -s   Find Secrets For JSFiles
        -m   Fetch JsFiles for manual testing Files will be Store in directory /jsfiles
        -w   Make a wordlist using words from jsfiles
+       -v   Extract Vairables from the jsfiles
        -o   Make an Output Directory to put all things Together
 
 ```
