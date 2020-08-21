@@ -46,6 +46,12 @@ wget https://gist.githubusercontent.com/KathanP19/c02130b163ba5817ca2ae99f7630f6
 mv getjsbeautify.sh ./tools/
 echo -e "\n-----------------------FINISHED INSTALLING getjsbeautify.sh------------------------"
 
+#INSTALL JSVAR.SH
+echo -e "\n-----------------------INSTALLING jsvar.sh--------------------------------"
+wget https://gist.githubusercontent.com/KathanP19/d2cda2f99c0b60d64b76ee6039b37e47/raw/eb105a4de06502b2732df9d682c61189c3703685/jsvar.sh
+mv jsvar.sh ./tools/
+echo -e "\n-----------------------FINISHED INSTALLING jsvar.sh-----------------------"
+
 #INSTALL MEG
 echo -e "\n-----------------------INSTALLING HAKRAWLER------------------------"
 go get github.com/hakluke/hakrawler
