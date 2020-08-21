@@ -52,10 +52,16 @@ cat temp_jswordlist.txt | sort -u >> jswordlist.txt
 rm temp_jswordlist.txt
 }
 
+#Gather Variables from JSFiles For Xss
+var_js(){
+echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started Finding Varibles in JSFiles For Possible XSS\e[0m\n";
+cat live_jsfile_links.txt | while read url ; do bash ./tools/jsvar.sh $url | tee -a js_var.txt ; done
+}
+
 #Save in Output Folder
 output(){
 mkdir -p $dir
-mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt $dir/
+mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt js_var.txt $dir/
 mv jsfiles/ $dir/
 }
 while getopts ":l:esmwo:" opt;do
@@ -71,6 +77,8 @@ while getopts ":l:esmwo:" opt;do
                     ;;
                 w ) wordlist_js
                     ;;
+                v ) var_js
+                    ;;
                 o ) dir=$OPTARG
                     output
                     ;;
@@ -80,6 +88,7 @@ while getopts ":l:esmwo:" opt;do
                      echo "       -s   Find Secrets For JSFiles";
                      echo "       -m   Fetch JsFiles for manual testing Files will be Store in directory /jsfiles";
                      echo "       -w   Make a wordlist using words from jsfiles";
+                     echo "       -v   Extract Vairables from the jsfiles";
                      echo "       -o   Make an Output Directory to put all things Together";
                      ;;
                 : ) echo "Invalid Options $OPTARG require an argument";
