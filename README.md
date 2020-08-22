@@ -11,6 +11,7 @@ Script made for all your javascript recon automation in bugbounty. Just pass sub
 4 - Get Jsfiles store locally for manual analysis
 5 - Make a Wordlist from Jsfiles
 6 - Extract Variable names from jsfiles for possible XSS.
+7 - Scan JsFiles For DomXSS.
 ```
 
 # Installation
@@ -46,6 +47,7 @@ Usage:
        -w   Make a wordlist using words from jsfiles
        -v   Extract Vairables from the jsfiles
        -o   Make an Output Directory to put all things Together
+       -d   Scan JsFiles For Possible DomXSS
 
 ```
 [![asciicast](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN.svg)](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN)
