@@ -52,7 +52,13 @@ wget https://gist.githubusercontent.com/KathanP19/d2cda2f99c0b60d64b76ee6039b37e
 mv jsvar.sh ./tools/
 echo -e "\n-----------------------FINISHED INSTALLING jsvar.sh-----------------------"
 
-#INSTALL MEG
+#INSTALL findomxss.sh
+echo -e "\n-----------------------INSTALLING findomxss.sh--------------------------------"
+wget https://gist.githubusercontent.com/KathanP19/9c1a8a322ada7b40462caf6897687cce/raw/3752435180c61ce7af13865b6b3581b49a6c6673/findomxss.sh
+mv findomxss.sh ./tools/
+echo -e "\n-----------------------FINISHED INSTALLING findomxss.sh-----------------------"
+
+#INSTALL HAKRAwler
 echo -e "\n-----------------------INSTALLING HAKRAWLER------------------------"
 go get github.com/hakluke/hakrawler
 echo -e "\n-----------------------FINISHED INSTALLING HAKRAWLER------------------------"
