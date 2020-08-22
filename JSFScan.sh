@@ -58,6 +58,12 @@ echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started Finding Varibles in JSFiles For P
 cat live_jsfile_links.txt | while read url ; do bash ./tools/jsvar.sh $url | tee -a js_var.txt ; done
 }
 
+#Find DomXSS
+domxss_js(){
+echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Scanning JSFiles For Possible DomXSS\e[0m\n";
+interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/findomxss.sh _target_" -v
+}
+
 #Save in Output Folder
 output(){
 mkdir -p $dir
@@ -79,6 +85,8 @@ while getopts ":l:esmwo:" opt;do
                     ;;
                 v ) var_js
                     ;;
+                d ) domxss_js
+                    ;;
                 o ) dir=$OPTARG
                     output
                     ;;
@@ -89,6 +97,7 @@ while getopts ":l:esmwo:" opt;do
                      echo "       -m   Fetch JsFiles for manual testing Files will be Store in directory /jsfiles";
                      echo "       -w   Make a wordlist using words from jsfiles";
                      echo "       -v   Extract Vairables from the jsfiles";
+                     echo "       -d   Scan JsFiles For Possible DomXSS";
                      echo "       -o   Make an Output Directory to put all things Together";
                      ;;
                 : ) echo "Invalid Options $OPTARG require an argument";
