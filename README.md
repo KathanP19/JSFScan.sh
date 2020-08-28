@@ -54,3 +54,7 @@ Usage:
 
 ## Thank You For Trying!
 **Your Contribution and Suggestions are welcomed.**
+
+**If the project helped you if any case if you buy a coffee for me ;)**
+
+<a href="https://www.buymeacoffee.com/kathanp19" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
