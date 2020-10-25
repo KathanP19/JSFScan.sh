@@ -6,12 +6,13 @@ Script made for all your javascript recon automation in bugbounty. Just pass sub
 # Features
 ```
 1 - Gather Jsfile Links from different sources.
-2 - Extract Endpoints from Jsfiles
-3 - Find Secrets from Jsfiles
-4 - Get Jsfiles store locally for manual analysis
-5 - Make a Wordlist from Jsfiles
-6 - Extract Variable names from jsfiles for possible XSS.
-7 - Scan JsFiles For DomXSS.
+2 - Import File Containing JSUrls
+3 - Extract Endpoints from Jsfiles
+4 - Find Secrets from Jsfiles
+5 - Get Jsfiles store locally for manual analysis
+6 - Make a Wordlist from Jsfiles
+7 - Extract Variable names from jsfiles for possible XSS.
+8 - Scan JsFiles For DomXSS.
 ```
 
 # Installation
@@ -41,13 +42,14 @@ And if you want to add cookie then edit the command at line 23 `cat $target | ha
                                                               
 Usage: 
        -l   Gather Js Files Links
+       -f   Import File Containing JS Urls
        -e   Gather Endpoints For JSFiles
        -s   Find Secrets For JSFiles
-       -m   Fetch JsFiles for manual testing Files will be Store in directory /jsfiles
+       -m   Fetch Js Files for manual testing
+       -o   Make an Output Directory to put all things Together
        -w   Make a wordlist using words from jsfiles
        -v   Extract Vairables from the jsfiles
-       -o   Make an Output Directory to put all things Together
-       -d   Scan JsFiles For Possible DomXSS
+       -d   Scan for Possible DomXSS from jsfiles
 
 ```
 [![asciicast](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN.svg)](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN)
