@@ -20,8 +20,15 @@ gather_js(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started Gathering JsFiles-links\e[0m\n";
 cat $target | gau | grep -iE "\.js$" | uniq | sort >> jsfile_links.txt
 cat $target | subjs >> jsfile_links.txt
-cat $target | hakrawler -js -depth 2 -scope subs -plain >> jsfile_links.txt
-cat jsfile_links.txt | httpx -follow-redirects -silent -status-code | grep "[200]" | cut -d ' ' -f1 | sort -u  > live_jsfile_links.txt
+#cat $target | hakrawler -js -depth 2 -scope subs -plain >> jsfile_links.txt
+echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Checking for live JsFiles-links\e[0m\n";
+cat jsfile_links.txt | httpx -follow-redirects -silent -status-code | grep "[200]" | cut -d ' ' -f1 | sort -u > live_jsfile_links.txt
+}
+
+#Open JSUrlFiles
+open_jsurlfile(){
+echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Filtering JsFiles-links\e[0m\n";
+cat $target | httpx -follow-redirects -silent -status-code | grep "[200]" | cut -d ' ' -f1 | sort -u > live_jsfile_links.txt
 }
 
 #Gather Endpoints From JsFiles
@@ -37,7 +44,7 @@ interlace -tL live_jsfile_links.txt -threads 5 -c "python3 ./tools/SecretFinder/
 }
 
 #Collect Js Files For Maually Search
-jsbeautify(){
+getjsbeautify(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started to Gather JSFiles locally for Manual Testing\e[0m\n";
 mkdir -p jsfiles
 interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/getjsbeautify.sh _target_" -v
@@ -67,41 +74,45 @@ interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/findomxss.sh _ta
 #Save in Output Folder
 output(){
 mkdir -p $dir
-mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt js_var.txt $dir/
+mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt $dir/
 mv jsfiles/ $dir/
 }
-while getopts ":l:esmwo:" opt;do
-        case ${opt} in
-                l ) target=$OPTARG
-                    gather_js
+while getopts ":l:f:esmwvdo:" opt;do
+	case ${opt} in
+		l ) target=$OPTARG
+		    gather_js
+		    ;;
+                f ) target=$OPTARG
+		    open_jsurlfile
+		    ;;
+		e ) endpoint_js
+		    ;;
+		s ) secret_js
+		    ;;
+		m ) getjsbeautify
+		    ;;
+		w ) wordlist_js
                     ;;
-                e ) endpoint_js
-                    ;;
-                s ) secret_js
-                    ;;
-                m ) jsbeautify
-                    ;;
-                w ) wordlist_js
-                    ;;
-                v ) var_js
-                    ;;
-                d ) domxss_js
-                    ;;
-                o ) dir=$OPTARG
-                    output
-                    ;;
-                \? ) echo "Usage: "
-                     echo "       -l   Gather Js Files Links";
+		v ) var_js
+		    ;;
+		d ) domxss_js
+		    ;;
+		o ) dir=$OPTARG
+		    output
+		    ;;
+		\? | h ) echo "Usage: "
+		     echo "       -l   Gather Js Files Links";
+		     echo "       -f   Import File Containing JS Urls";
                      echo "       -e   Gather Endpoints For JSFiles";
-                     echo "       -s   Find Secrets For JSFiles";
-                     echo "       -m   Fetch JsFiles for manual testing Files will be Store in directory /jsfiles";
-                     echo "       -w   Make a wordlist using words from jsfiles";
-                     echo "       -v   Extract Vairables from the jsfiles";
-                     echo "       -d   Scan JsFiles For Possible DomXSS";
-                     echo "       -o   Make an Output Directory to put all things Together";
-                     ;;
-                : ) echo "Invalid Options $OPTARG require an argument";
-                    ;;
-        esac
+		     echo "       -s   Find Secrets For JSFiles";
+		     echo "       -m   Fetch Js Files for manual testing";
+		     echo "       -o   Make an Output Directory to put all things Together";
+		     echo "       -w   Make a wordlist using words from jsfiles";
+		     echo "       -v   Extract Vairables from the jsfiles";
+		     echo "       -d   Scan for Possible DomXSS from jsfiles";
+		     ;;
+		: ) echo "Invalid Options $OPTARG require an argument";
+		    ;;
+	esac
 done
 shift $((OPTIND -1))
