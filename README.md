@@ -32,7 +32,7 @@ $ ./install.sh
 When using the docker version, everything will be installed automatically. You just have to execute the following commands: 
 
 ```
-$ git clone git@github.com:bolli95/JSFScan.sh.git
+$ git clone https://github.com/KathanP19/JSFScan.sh
 $ cd JSFScan/
 $ docker build . -t jsfscan
 ```
