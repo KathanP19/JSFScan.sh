@@ -16,11 +16,35 @@ Script made for all your javascript recon automation in bugbounty. Just pass sub
 ```
 
 # Installation
-**Note: Make sure you have installed golang properly before running installation script.**
+
+There are two ways of executing this script: Either locally on the host machine or within a Docker container 
+
+### Installing all dependencies locally
+
+**Note: Make sure you have installed golang properly before running installation script locally.**
+
 ```
 $ sudo chmod +x install.sh
 $ ./install.sh
 ```
+
+### Building the docker container 
+
+When using the docker version, everything will be installed automatically. You just have to execute the following commands: 
+
+```
+$ git clone https://github.com/KathanP19/JSFScan.sh
+$ cd JSFScan/
+$ docker build . -t jsfscan
+```
+
+In order to start the pre-configured container run the following command: 
+
+```
+$ docker run -it jsfscan "/bin/bash"
+```
+
+After that an interactive bash session should be opened. 
 
 # Usage
 Target List should be with `https://` and `http://` use httpx or httprobe for this.

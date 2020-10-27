@@ -8,9 +8,13 @@ echo -e "\n-----------------------INSTALLING INTERLACE------------------------"
 cd ./tools
 git clone https://github.com/codingo/Interlace.git
 cd -
-sudo pip3 install -r ./tools/Interlace/requirements.txt
+pip3 install --user -r ./tools/Interlace/requirements.txt
 cd ./tools/Interlace/
-sudo python3 setup.py install
+if ! test `which sudo`; then
+	python3 setup.py install	
+else
+	sudo python3 setup.py install
+fi
 cd -
 echo -e "\n-----------------------FINISHED INSTALLING INTERLACE------------------------"
 
@@ -19,7 +23,7 @@ echo -e "\n-----------------------INSTALLING SECRETFINDER-----------------------
 cd ./tools
 git clone https://github.com/m4ll0k/SecretFinder.git
 cd -
-sudo pip3 install -r ./tools/SecretFinder/requirements.txt
+pip3 install --user -r ./tools/SecretFinder/requirements.txt
 echo -e "\n-----------------------FINISHED INSTALLING SECRETFINDER------------------------"
 
 #INSTALL GAU
@@ -60,7 +64,7 @@ echo -e "\n-----------------------FINISHED INSTALLING findomxss.sh--------------
 
 #INSTALL HAKRAwler
 echo -e "\n-----------------------INSTALLING HAKRAWLER------------------------"
-go get github.com/hakluke/hakrawler
+GO111MODULE=on go get -v github.com/hakluke/hakrawler
 echo -e "\n-----------------------FINISHED INSTALLING HAKRAWLER------------------------"
 
 #INSTALL LINKFINDER
@@ -68,9 +72,13 @@ echo -e "\n-----------------------INSTALLING LINKFINDER------------------------"
 cd ./tools
 git clone https://github.com/dark-warlord14/LinkFinder
 cd -
-sudo pip3 install -r ./tools/LinkFinder/requirements.txt
+pip3 install --user -r ./tools/LinkFinder/requirements.txt
 cd ./tools/LinkFinder/
-sudo python3 setup.py install
+if ! test `which sudo`; then
+	python3 setup.py install
+else 
+	sudo python3 setup.py install
+fi
 cd -
 echo -e "\n-----------------------FINISHED INSTALLING LINKFINDER------------------------"
 
