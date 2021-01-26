@@ -71,6 +71,12 @@ echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Scanning JSFiles For Possible DomXSS\e[0m
 interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/findomxss.sh _target_" -v
 }
 
+#Generate Report
+report(){
+echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Generating Report!\e[0m\n";
+bash report.sh
+}
+
 #Save in Output Folder
 output(){
 mkdir -p $dir
