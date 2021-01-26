@@ -74,7 +74,7 @@ interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/findomxss.sh _ta
 #Save in Output Folder
 output(){
 mkdir -p $dir
-mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt $dir/
+mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt report.html $dir/
 mv jsfiles/ $dir/
 }
 while getopts ":l:f:esmwvdo:" opt;do
@@ -97,6 +97,8 @@ while getopts ":l:f:esmwvdo:" opt;do
 		    ;;
 		d ) domxss_js
 		    ;;
+		r ) report
+		    ;;
 		o ) dir=$OPTARG
 		    output
 		    ;;
@@ -110,6 +112,7 @@ while getopts ":l:f:esmwvdo:" opt;do
 		     echo "       -w   Make a wordlist using words from jsfiles";
 		     echo "       -v   Extract Vairables from the jsfiles";
 		     echo "       -d   Scan for Possible DomXSS from jsfiles";
+		     echo "       -r   Generate Scan Report in html";
 		     ;;
 		: ) echo "Invalid Options $OPTARG require an argument";
 		    ;;
