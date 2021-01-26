@@ -83,8 +83,26 @@ mkdir -p $dir
 mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt report.html $dir/
 mv jsfiles/ $dir/
 }
-while getopts ":l:f:esmwvdo:" opt;do
+while getopts ":l:f:esmwvdro:-:" opt;do
 	case ${opt} in
+		- )      case "${OPTARG}" in
+
+			all) 
+				endpoint_js
+				secret_js
+				getjsbeautify
+				wordlist_js
+				var_js
+				domxss_js
+				;;
+
+			*)
+                                        if [ "$OPTERR" = 1 ] && [ "${optspec:0:1}" != ":" ]; then
+                                        echo "Unknown option --${OPTARG}" >&2
+                                        fi
+                                        ;;
+                        esac;; 
+
 		l ) target=$OPTARG
 		    gather_js
 		    ;;
@@ -119,6 +137,7 @@ while getopts ":l:f:esmwvdo:" opt;do
 		     echo "       -v   Extract Vairables from the jsfiles";
 		     echo "       -d   Scan for Possible DomXSS from jsfiles";
 		     echo "       -r   Generate Scan Report in html";
+		     echo "	  --all Scan Everything!";
 		     ;;
 		: ) echo "Invalid Options $OPTARG require an argument";
 		    ;;
