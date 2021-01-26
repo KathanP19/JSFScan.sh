@@ -13,6 +13,7 @@ Script made for all your javascript recon automation in bugbounty. Just pass sub
 6 - Make a Wordlist from Jsfiles
 7 - Extract Variable names from jsfiles for possible XSS.
 8 - Scan JsFiles For DomXSS.
+9 - Generate Html Report.
 ```
 
 # Installation
@@ -74,6 +75,7 @@ Usage:
        -w   Make a wordlist using words from jsfiles
        -v   Extract Vairables from the jsfiles
        -d   Scan for Possible DomXSS from jsfiles
+       -r   Generate Scan Report in html
 
 ```
 [![asciicast](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN.svg)](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN)
