@@ -76,9 +76,15 @@ Usage:
        -v   Extract Vairables from the jsfiles
        -d   Scan for Possible DomXSS from jsfiles
        -r   Generate Scan Report in html
+       --all Scan Everything!
 
 ```
-[![asciicast](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN.svg)](https://asciinema.org/a/z2DrdjRgVMhr4wF0BhigaF6uN)
+
+<!-- blank line -->
+<figure class="video_container">
+  <iframe src="https://www.youtube.com/embed/Z13dnarKF-w" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+<!-- blank line -->
 
 ## Thank You For Trying!
 **Your Contribution and Suggestions are welcomed.**
