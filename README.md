@@ -79,12 +79,8 @@ Usage:
        --all Scan Everything!
 
 ```
-
-<!-- blank line -->
-<figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/Z13dnarKF-w" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
-<!-- blank line -->
+# Check Video Here.
+https://www.youtube.com/watch?v=Z13dnarKF-w
 
 ## Thank You For Trying!
 **Your Contribution and Suggestions are welcomed.**
