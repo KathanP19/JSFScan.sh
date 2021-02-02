@@ -29,17 +29,17 @@ echo -e "\n-----------------------FINISHED INSTALLING SECRETFINDER--------------
 #INSTALL GAU
 echo -e "\n-----------------------INSTALLING GAU------------------------"
 go get github.com/tomnomnom/waybackurls
-GO111MODULE=on go get -u -v github.com/lc/gau
+GO111MODULE=on go get -v github.com/lc/gau
 echo -e "\n-----------------------FINISHED INSTALLING GAU------------------------"
 
 #INSTALL SUBJS
 echo -e "\n-----------------------INSTALLING SUBJS------------------------"
-GO111MODULE=on go get -u -v github.com/lc/subjs
+GO111MODULE=on go get -v github.com/lc/subjs
 echo -e "\n-----------------------FINISHED INSTALLING SUBJS------------------------"
 
 #INSTALL HAKCHECKURL
 echo -e "\n-----------------------INSTALLING HTTPX------------------------"
-GO111MODULE=on go get -u -v github.com/projectdiscovery/httpx/cmd/httpx
+GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
 echo -e "\n-----------------------FINISHED INSTALLING HTTPX------------------------"
 
 #INSTALL GETJSBEAUTIFY.SH
