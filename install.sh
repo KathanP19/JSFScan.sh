@@ -58,7 +58,7 @@ echo -e "\n-----------------------FINISHED INSTALLING jsvar.sh------------------
 
 #INSTALL findomxss.sh
 echo -e "\n-----------------------INSTALLING findomxss.sh--------------------------------"
-wget https://gist.githubusercontent.com/KathanP19/9c1a8a322ada7b40462caf6897687cce/raw/3752435180c61ce7af13865b6b3581b49a6c6673/findomxss.sh
+wget https://gist.githubusercontent.com/KathanP19/9c1a8a322ada7b40462caf6897687cce/raw/5d370a06c36257aa99cdc5d91d05f74a18c91ce7/findomxss.sh
 mv findomxss.sh ./tools/
 echo -e "\n-----------------------FINISHED INSTALLING findomxss.sh-----------------------"
 
