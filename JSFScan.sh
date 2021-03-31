@@ -80,7 +80,7 @@ bash report.sh
 #Save in Output Folder
 output(){
 mkdir -p $dir
-mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt report.html $dir/
+mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt report.html $dir/ 2>/dev/null
 mv jsfiles/ $dir/
 }
 while getopts ":l:f:esmwvdro:-:" opt;do
