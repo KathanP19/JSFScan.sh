@@ -15,6 +15,8 @@ RUN apt-get -y update && apt-get -y install --no-install-recommends \
     wget 	\
     python3 	\
     python3-pip \
+    python3-setuptools \
+    python3-wheel \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /usr/share/doc && rm -rf /usr/share/man \
     && apt-get clean
