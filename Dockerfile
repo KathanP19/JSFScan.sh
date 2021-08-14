@@ -10,10 +10,14 @@ COPY . .
 
 # install all depedencies
 RUN chmod +x ./install.sh
-RUN apt -y update && apt -y install git  	\
-				    wget 	\
-				    python3 	\
-				    python3-pip
+RUN apt-get -y update && apt-get -y install --no-install-recommends \
+    git         \
+    wget 	\
+    python3 	\
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/share/doc && rm -rf /usr/share/man \
+    && apt-get clean
 RUN ./install.sh
 ENV HOME /root
 ENV GOPATH=$HOME/go/bin
