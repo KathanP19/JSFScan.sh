@@ -35,7 +35,7 @@ When using the docker version, everything will be installed automatically. You j
 
 ```
 $ git clone https://github.com/KathanP19/JSFScan.sh
-$ cd JSFScan/
+$ cd JSFScan.js/
 $ docker build . -t jsfscan
 ```
 
