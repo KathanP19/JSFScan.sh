@@ -28,18 +28,18 @@ echo -e "\n-----------------------FINISHED INSTALLING SECRETFINDER--------------
 
 #INSTALL GAU
 echo -e "\n-----------------------INSTALLING GAU------------------------"
-go get github.com/tomnomnom/waybackurls
-GO111MODULE=on go get -v github.com/lc/gau
+go install -v github.com/tomnomnom/waybackurls@latest
+go install -v github.com/lc/gau@latest
 echo -e "\n-----------------------FINISHED INSTALLING GAU------------------------"
 
 #INSTALL SUBJS
 echo -e "\n-----------------------INSTALLING SUBJS------------------------"
-GO111MODULE=on go get -v github.com/lc/subjs
+go install -v github.com/lc/subjs@latest
 echo -e "\n-----------------------FINISHED INSTALLING SUBJS------------------------"
 
 #INSTALL HAKCHECKURL
 echo -e "\n-----------------------INSTALLING HTTPX------------------------"
-GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 echo -e "\n-----------------------FINISHED INSTALLING HTTPX------------------------"
 
 #INSTALL GETJSBEAUTIFY.SH
@@ -64,7 +64,7 @@ echo -e "\n-----------------------FINISHED INSTALLING findomxss.sh--------------
 
 #INSTALL HAKRAwler
 echo -e "\n-----------------------INSTALLING HAKRAWLER------------------------"
-GO111MODULE=on go get -v github.com/hakluke/hakrawler
+go install -v github.com/hakluke/hakrawler@latest
 echo -e "\n-----------------------FINISHED INSTALLING HAKRAWLER------------------------"
 
 #INSTALL LINKFINDER
