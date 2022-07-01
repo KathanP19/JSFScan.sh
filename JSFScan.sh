@@ -34,20 +34,20 @@ cat "$target" | httpx -follow-redirects -silent -status-code | grep "[200]" | cu
 #Gather Endpoints From JsFiles
 endpoint_js(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started gathering Endpoints\e[0m\n";
-interlace -tL live_jsfile_links.txt -threads 5 -c "echo 'Scanning _target_ Now' ; python3 ./tools/LinkFinder/linkfinder.py -d -i _target_ -o cli >> endpoints.txt" -v
+interlace -tL live_jsfile_links.txt -threads 5 -c "echo 'Scanning _target_ Now' ; python3 ./tools/LinkFinder/linkfinder.py -d -i '_target_' -o cli >> endpoints.txt" -v
 }
 
 #Gather Secrets From Js Files
 secret_js(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started Finding Secrets in JSFiles\e[0m\n";
-interlace -tL live_jsfile_links.txt -threads 5 -c "python3 ./tools/SecretFinder/SecretFinder.py -i _target_ -o cli >> jslinksecret.txt" -v
+interlace -tL live_jsfile_links.txt -threads 5 -c "python3 ./tools/SecretFinder/SecretFinder.py -i '_target_' -o cli >> jslinksecret.txt" -v
 }
 
 #Collect Js Files For Maually Search
 getjsbeautify(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started to Gather JSFiles locally for Manual Testing\e[0m\n";
 mkdir -p jsfiles
-interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/getjsbeautify.sh _target_" -v
+interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/getjsbeautify.sh '_target_'" -v
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Manually Search For Secrets Using gf or grep in out/\e[0m\n";
 }
 
