@@ -62,10 +62,10 @@ wget https://gist.githubusercontent.com/KathanP19/9c1a8a322ada7b40462caf6897687c
 mv findomxss.sh ./tools/
 echo -e "\n-----------------------FINISHED INSTALLING findomxss.sh-----------------------"
 
-#INSTALL HAKRAwler
-echo -e "\n-----------------------INSTALLING HAKRAWLER------------------------"
-go install -v github.com/hakluke/hakrawler@latest
-echo -e "\n-----------------------FINISHED INSTALLING HAKRAWLER------------------------"
+#INSTALL KATANA
+echo -e "\n-----------------------INSTALLING KATANA------------------------"
+go install github.com/projectdiscovery/katana/cmd/katana@latest
+echo -e "\n-----------------------FINISHED INSTALLING KATANA------------------------"
 
 #INSTALL LINKFINDER
 echo -e "\n-----------------------INSTALLING LINKFINDER------------------------"
