@@ -18,11 +18,13 @@ logo
 #Gather JSFilesUrls
 gather_js(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started Gathering JsFiles-links\e[0m\n";
-cat "$target" | gau | grep -iE "\.js$" | uniq | sort >> jsfile_links.txt
+cat "$target" | gau | uniq | sort >> allfile_links.txt
+#cat "$target" | katana -jc -aff | grep -iE "\.js$" | uniq | sort >> allfile_links.txt
+cat allfile_links.txt | grep -iE "\.js$" | uniq | sort >> jsfile_links.txt
 cat "$target" | subjs >> jsfile_links.txt
-#cat "$target" | katana -jc -aff | grep -iE "\.js$" | uniq | sort >> jsfile_links.txt
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Checking for live JsFiles-links\e[0m\n";
 cat jsfile_links.txt | httpx -mc 200 -follow-redirects -silent | sort -u > live_jsfile_links.txt
+cat allfile_links.txt | httpx -mc 200 -follow-redirects -silent | sort -u > live_allfile_links.txt
 }
 
 #Open JSUrlFiles
@@ -71,6 +73,12 @@ echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Scanning JSFiles For Possible DomXSS\e[0m
 interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/findomxss.sh _target_" -v
 }
 
+#Run Nuclei Token Templates
+run_nucleijs(){
+echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Scanning Allfiles for Tokens using Nuclei\e[0m\n";
+cat live_allfile_links.txt | nuclei -t ~/nuclei-templates/http/exposures/tokens -silent | tee nuclei_tokens.txt
+}
+
 #Generate Report
 report(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Generating Report!\e[0m\n";
@@ -80,7 +88,7 @@ bash report.sh
 #Save in Output Folder
 output(){
 mkdir -p $dir
-mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt report.html $dir/ 2>/dev/null
+mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt report.html allfile_links.txt live_allfile_links.txt $dir/ 2>/dev/null
 mv jsfiles/ $dir/
 }
 while getopts ":l:f:esmwvdro:-:" opt;do
@@ -94,6 +102,7 @@ while getopts ":l:f:esmwvdro:-:" opt;do
 				wordlist_js
 				var_js
 				domxss_js
+				run_nucleijs
 				;;
 
 			*)
@@ -123,6 +132,8 @@ while getopts ":l:f:esmwvdro:-:" opt;do
 		    ;;
 		r ) report
 		    ;;
+		n ) run_nucleijs
+		    ;;	
 		o ) dir=$OPTARG
 		    output
 		    ;;
@@ -136,7 +147,8 @@ while getopts ":l:f:esmwvdro:-:" opt;do
 		     echo "       -w   Make a wordlist using words from jsfiles";
 		     echo "       -v   Extract Vairables from the jsfiles";
 		     echo "       -d   Scan for Possible DomXSS from jsfiles";
-		     echo "       -r   Generate Scan Report in html";
+		     echo "       -n   Scan for possible api keys/tokens using Nuclei";
+			 echo "       -r   Generate Scan Report in html";
 		     echo "	  --all Scan Everything!";
 		     ;;
 		: ) echo "Invalid Options $OPTARG require an argument";
