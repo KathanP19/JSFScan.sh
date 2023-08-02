@@ -73,7 +73,7 @@ Usage:
        -m   Fetch Js Files for manual testing
        -o   Make an Output Directory to put all things Together
        -w   Make a wordlist using words from jsfiles
-       -v   Extract Vairables from the jsfiles
+       -v   Extract Variables from the jsfiles
        -d   Scan for Possible DomXSS from jsfiles
        -r   Generate Scan Report in html
        --all Scan Everything!
