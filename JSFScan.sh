@@ -134,7 +134,7 @@ while getopts ":l:f:esmwvdro:-:" opt;do
 		     echo "       -m   Fetch Js Files for manual testing";
 		     echo "       -o   Make an Output Directory to put all things Together";
 		     echo "       -w   Make a wordlist using words from jsfiles";
-		     echo "       -v   Extract Vairables from the jsfiles";
+		     echo "       -v   Extract Variables from the jsfiles";
 		     echo "       -d   Scan for Possible DomXSS from jsfiles";
 		     echo "       -r   Generate Scan Report in html";
 		     echo "	  --all Scan Everything!";
