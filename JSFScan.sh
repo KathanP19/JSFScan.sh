@@ -18,9 +18,9 @@ logo
 #Gather JSFilesUrls
 gather_js(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started Gathering JsFiles-links\e[0m\n";
-cat "$target" | gau | uniq | sort >> allfile_links.txt
-#cat "$target" | katana -jc -aff | grep -iE "\.js$" | uniq | sort >> allfile_links.txt
-cat allfile_links.txt | grep -iE "\.js$" | uniq | sort >> jsfile_links.txt
+cat "$target" | gau | sort -u >> allfile_links.txt
+cat "$target" | katana -jc -aff | grep -iE "\.js$" | sort -u >> allfile_links.txt
+cat allfile_links.txt | grep -iE "\.js$" | sort -u >> jsfile_links.txt
 cat "$target" | subjs >> jsfile_links.txt
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Checking for live JsFiles-links\e[0m\n";
 cat jsfile_links.txt | httpx -mc 200 -follow-redirects -silent | sort -u > live_jsfile_links.txt
@@ -49,7 +49,7 @@ interlace -tL live_jsfile_links.txt -threads 5 -c "python3 ./tools/SecretFinder/
 getjsbeautify(){
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Started to Gather JSFiles locally for Manual Testing\e[0m\n";
 mkdir -p jsfiles
-interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/getjsbeautify.sh '_target_'" -v
+interlace -tL live_jsfile_links.txt -threads 50 -c "bash ./tools/getjsbeautify.sh '_target_'" -v
 echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Manually Search For Secrets Using gf or grep in out/\e[0m\n";
 }
 
@@ -73,9 +73,10 @@ echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Scanning JSFiles For Possible DomXSS\e[0m
 interlace -tL live_jsfile_links.txt -threads 5 -c "bash ./tools/findomxss.sh _target_" -v
 }
 
-#Run Nuclei Token Templates
+#Run Nuclei Token Templates and Trufflehog
 run_nucleijs(){
-echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Scanning Allfiles for Tokens using Nuclei\e[0m\n";
+echo -e "\n\e[36m[\e[32m+\e[36m]\e[92m Scanning Allfiles for Tokens using Nuclei and Trufflehog\e[0m\n";
+trufflehog filesystem jsfiles/ | tee trufflehog_results.txt
 cat live_allfile_links.txt | nuclei -t ~/nuclei-templates/http/exposures/tokens -silent | tee nuclei_tokens.txt
 }
 
@@ -88,7 +89,7 @@ bash report.sh
 #Save in Output Folder
 output(){
 mkdir -p $dir
-mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt report.html allfile_links.txt live_allfile_links.txt $dir/ 2>/dev/null
+mv endpoints.txt jsfile_links.txt jslinksecret.txt live_jsfile_links.txt jswordlist.txt js_var.txt domxss_scan.txt report.html allfile_links.txt live_allfile_links.txt trufflehog_results.txt $dir/ 2>/dev/null
 mv jsfiles/ $dir/
 }
 while getopts ":l:f:esmwvdro:-:" opt;do
