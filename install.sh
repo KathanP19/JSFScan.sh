@@ -87,3 +87,10 @@ echo -e "\n-----------------------INSTALLING GETJSWORDS.PY----------------------
 wget https://raw.githubusercontent.com/m4ll0k/Bug-Bounty-Toolz/master/getjswords.py
 mv getjswords.py ./tools/
 echo -e "\n-----------------------FINISHED INSTALLING GETJSWORDS.PY------------------------"
+
+#INSTALL Trufflehog
+echo -e "\n-----------------------INSTALLING TRUFFLEHOG------------------------"
+git clone https://github.com/trufflesecurity/trufflehog.git;
+cd trufflehog;
+go install;
+echo -e "\n-----------------------FINISHED INSTALLING TRUFFLEHOG------------------------"
